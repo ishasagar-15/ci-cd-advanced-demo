@@ -41,7 +41,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: build-output
+          name: build-output-${{ github.run-id }}
           path: dist/
 
       - name: login to docker hub
