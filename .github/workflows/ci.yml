@@ -57,3 +57,19 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/ci-cd-advance-demo:letest
 
+
+  deploy:
+    needs: build-test
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v5
+        with:
+          name: build-output-18
+      
+      - name: show files
+        run: ls -R
+
+      - name: read output file
+        run: cat dist/output.txt
