@@ -59,17 +59,15 @@ jobs:
 
 
   deploy:
-    needs: build-test
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Download artifacts
-        uses: actions/download-artifact@v5
-        with:
-          name: build-output-18
-      
-      - name: show files
-        run: ls -R
+  needs: build-test
+  runs-on: ubuntu-latest
 
-      - name: read output file
-        run: cat build-output-18/dist/output.txt
+  steps:
+    - name: Download all artifacts
+      uses: actions/download-artifact@v5
+
+    - name: show files
+      run: ls -R
+
+    - name: read output file
+      run: cat build-output-18/output.txt
